@@ -9,6 +9,7 @@ const typedfield = document.getElementById('typed');
 const wrap = document.getElementById('wrap');
 const start = document.getElementById('start')
 const count = document.getElementById('count');
+const scoreCount = document.getElementById('score-counter');
 
  // 複数のテキストを格納する配列
 const textLists = [
@@ -55,7 +56,8 @@ const createText = () => {
   untyped = untyped.substring(1);
   typedfield.textContent = typed;
   untypedfield.textContent = untyped;
-
+  // 現在の文字数をカウントする
+  scoreCount.textContent = score;
   // テキストがなくなったら新しいテキストを表示
   if(untyped === '') {
     createText();
@@ -95,6 +97,10 @@ const gameOver = id => {
   if(result == true){
     window.location.reload();
   }
+  else{
+    count.style.opacity= 0;   
+    scoreCount.style.opacity= 0; 
+  }
 };
 
 // カウントダウンタイマー
@@ -102,13 +108,13 @@ const timer = () => {
   // タイマー部分のHTML要素(p)要素を取得する
   let time = count.textContent;
   const id = setInterval(() => {
-  // カウントダウンする
-  time--;
-  count.textContent = time;
   // カウントダウンが0になったらタイマーを止める
   if(time == 0) {
     gameOver(id);
   }
+    // カウントダウンする
+    time--;
+    count.textContent = time;
   },1000);
 };
 
@@ -122,6 +128,10 @@ start.addEventListener('click', () => {
   start.style.display = 'none';
   // キーボードのイベント処理
   document.addEventListener('keypress', keyPress);
+  setTimeout(()=>{
+    untypedfield.textContent='タイムアウト';
+  },60000);
+  
 });
 
 untypedfield.textContent ='スタートボタンで開始';
