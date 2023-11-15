@@ -24,3 +24,13 @@ body {
 .mistyped {
   background-color: rgb(249, 62, 62);
 }
+
+#score-counter {
+  margin: 0;
+  font-weight: bold;
+  color: #888;
+}
+
+#end {
+  color: #ed7070;
+}
