@@ -115,7 +115,7 @@ const timer = () => {
     // カウントダウンする
     time--;
     count.textContent = time;
-  },100);
+  },1000);
 };
 
 // ゲームスタート時の処理
@@ -130,7 +130,7 @@ start.addEventListener('click', () => {
   document.addEventListener('keypress', keyPress);
   setTimeout(()=>{
     untypedfield.textContent='タイムアウト';
-  },6000);
+  },60000);
   
 });
 
